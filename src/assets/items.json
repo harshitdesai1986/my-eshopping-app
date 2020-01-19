@@ -1,0 +1,55 @@
+{
+    "items": [
+        {
+            "src": "/assets/headphone.png",
+            "title": "Headphone",
+            "description": "Genuine headphone from XYZ.",
+            "id": "76547657",
+            "originalPrice": "100",
+            "discount": "20",
+            "additionalDiscount": "30",
+            "stockCount": "5",
+            "brand": "XYZ",
+            "model": "#5467898",
+            "material": "Fiber",
+            "dimensions": "5 x 6 x 2",
+            "ratings": "4",
+            "totalRatings": "5",
+            "reviewCount": "25"
+        },
+        {
+            "src": "/assets/t-shirt.png",
+            "title": "T-Shirt",
+            "description": "Genuine T-Shirt from XYZ.",
+            "id": "234567",
+            "originalPrice": "25",
+            "discount": "20",
+            "additionalDiscount": "10",
+            "stockCount": "25",
+            "brand": "XYZ",
+            "model": "#5467898",
+            "material": "Cotton",
+            "dimensions": "XL",
+            "ratings": "3",
+            "totalRatings": "5",
+            "reviewCount": "125"
+        },
+        {
+            "src": "/assets/watch.png",
+            "title": "Watch",
+            "description": "Genuine watch from XYZ.",
+            "id": "56765878",
+            "originalPrice": "50",
+            "discount": "10",
+            "additionalDiscount": "10",
+            "stockCount": "5",
+            "brand": "XYZ",
+            "model": "#5467898",
+            "material": "Plastic",
+            "dimensions": "3 x 3 x 2",
+            "ratings": "2",
+            "totalRatings": "5",
+            "reviewCount": "115"
+        }
+    ]
+}

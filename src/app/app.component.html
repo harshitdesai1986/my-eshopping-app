@@ -1,21 +1,118 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<!-- Title Bar-->
+<div class="titlebar">
+  <i class="fas fa-store logo"></i>
+  <div class="cart-items">
+    <i class="fas fa-shopping-cart" (click)="toggleCart()"></i>
+    <div class="added-item-count"  (click)="toggleCart()"><span>{{cartItemCount}}</span></div>
+    <span class="total-amount">${{totalCartValue}}</span>
+    <i class="fas fa-heart" (click)="toggleFavorite(productToDisplay)"></i>
+    <div class="added-item-count"><span>{{favoriteItemCount}}</span></div>
 
-<router-outlet></router-outlet>
+    <!-- Cart Modal Window -->
+    <div *ngIf="toggleCartModal" class="cart-model">
+      <span><i class="fas fa-times close-cart" (click)="toggleCart()"></i></span>
+      <span *ngIf="cartItemCount === 0">Your cart is empty!</span>
+      <table>
+        <tr *ngFor="let item of itemsInCart">
+          <td class="small-width"><img src="{{item.src}}" /></td>
+          <td class="large-width"><span class="item-title"><b>{{item.title}}</b></span></td>
+          <td class="small-width"><span>${{item.finalPrice}}</span></td>
+          <td class="small-width"><i class="fas fa-times delete-item" (click)="removeCartItem(item)"></i></td>
+        </tr>
+      </table>
+    </div>
+</div>
+
+</div>
+
+<!-- Container -->
+<div class="container-background">
+  <div class="row">
+    <div class="side">
+      <img src="{{productToDisplay.src}}"/>
+    </div>
+    <div class="main">
+      <div>
+        <span class="">Product</span>
+        <span class="item-id">Product Code:{{productToDisplay.id}}</span>
+      </div>
+      <div>
+        <span class="item-title">{{productToDisplay.title}}</span>
+      </div>
+      <div class="price-container">
+        <span class="original-price">${{discountedPriceToDisplay}}</span>
+        <span class="current-price">${{finalPriceToDisplay}}</span>
+        <button type="button" (click)="addToCart(productToDisplay)">Add To Basket</button>
+      </div>
+      <div>
+          <span class="discount-info"><b>RRP:</b>${{productToDisplay.originalPrice}} (Discount {{productToDisplay.discount}}% + {{productToDisplay.additionalDiscount}}%)</span>
+      </div>
+      <div class="country-details">
+        <span><b>Country:</b> USA</span>
+        <span class="underline-text"><u>Change</u></span>
+      </div>
+      <div>
+        <span class="availibility-info">In stock. More than {{productToDisplay.stockCount}} available online. Order in next 10 minsfor next day delivery.</span>
+      </div>
+      <div class="description-details">
+        <span>{{productToDisplay.description}}</span>
+        <ul>
+          <li>Brand: {{productToDisplay.brand}}</li>
+          <li>Model: {{productToDisplay.model}}</li>
+          <li>Material: {{productToDisplay.material}}</li>
+          <li>Dimensions: {{productToDisplay.dimensions}}</li>
+        </ul>
+      </div>
+      <hr/>
+      <div class="ratings-details">
+          <i class="fas fa-star" [ngClass]="{'selected': productToDisplay.ratings >= 1}"></i>
+          <i class="fas fa-star" [ngClass]="{'selected': productToDisplay.ratings >= 2}"></i>
+          <i class="fas fa-star" [ngClass]="{'selected': productToDisplay.ratings >= 3}"></i>
+          <i class="fas fa-star" [ngClass]="{'selected': productToDisplay.ratings >= 4}"></i>
+          <i class="fas fa-star" [ngClass]="{'selected': productToDisplay.ratings == 5}"></i>
+          <span class="ratings">{{productToDisplay.ratings}} / {{productToDisplay.totalRatings}}</span>
+          <span class="reviews"><u>{{productToDisplay.reviewCount}} <span>reviews</span></u></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-container">
+    <div>
+      <div>
+        <i class="fas fa-heart"></i>
+        <span class="with-style">Lorem ipsum</span>
+      </div>
+    </div>
+    <div>
+      <div>
+          <i class="fas fa-plus"></i>
+          <i class="fas fa-bell"></i>
+          <span class="with-style">Lorem ipsum</span>
+      </div>
+    </div>
+    <div>
+      <div>
+        <span>Lorem ipsum</span>
+        <h2>$120.00</h2>
+      </div>
+    </div>
+    <div>
+      <div>
+        <p>Loren ipsum</p>
+        <i class="fab fa-cc-visa"></i>
+        <i class="fab fa-cc-mastercard"></i>
+        <i class="fab fa-cc-paypal"></i>
+        <i class="fab fa-cc-amex"></i>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-container">
+    <div><span>LOREM IPSUM</span></div>
+    <div class="selected"><span>LOREM IPSUM</span></div>
+    <div><span>LOREM IPSUM</span></div>
+    <div><span>LOREM IPSUM</span></div>
+    <div><span>LOREM IPSUM</span></div>
+  </div>
+
+</div>

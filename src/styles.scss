@@ -1,1 +1,362 @@
 /* You can add global styles to this file, and also import other style files */
+$lightBlueBackground: #11c3df;
+$iconColor: #a7a7a7;
+$bgColorWhite: white;
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #24292e;
+    background-image: linear-gradient($bgColorWhite, $iconColor);
+}
+
+.flex-container {
+    display: flex;
+}
+
+.titlebar {
+    background-color: black;
+    height: 80px;
+    border-bottom: 3px solid $lightBlueBackground;
+
+    .logo {
+        color: $iconColor;
+        font-size: 40px;
+        margin: 18px;
+        float: left;
+        cursor: pointer;
+    }
+
+    .cart-items {
+        float: right;
+        margin: 25px;
+
+        i {
+            color: $iconColor;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        i.close-cart {
+            color: $iconColor;
+            font-size: 20px;
+            cursor: pointer;
+            float: right;
+            position: relative;
+            top: -10px;
+            left: 5px;
+        }
+
+        .total-amount {
+            color: $iconColor;
+            margin: 25px 40px 25px 0;
+            position: relative;
+            top: -5px;
+            font-weight: bold;
+        }
+
+        .added-item-count {
+            display: inline-block;
+            height: 18px;
+            width: 18px;
+            background-color: $lightBlueBackground;
+            border-radius: 8px;
+            position: relative;
+            top: -15px;
+            left: -10px;
+            cursor: pointer;
+
+            span {
+                color: white;
+                font-size: 10px;
+                position: relative;
+                left: 6px;
+                top: -2px;
+                font-weight: bold;
+            }
+        }
+
+        .cart-model {
+            width: 300px;
+            height: 300px;
+            background-color: $bgColorWhite;
+            border: 1px solid $lightBlueBackground;
+            border-radius: 5px;
+            position: absolute;
+            z-index: 9999;
+            right: 140px;
+            cursor: pointer;
+            padding: 15px;
+
+            table {
+                tr {
+                    td.small-width {
+                        width: 20%;
+                        border-bottom: 2px solid $lightBlueBackground;
+                        padding-bottom: 10px;
+                        padding-top: 10px;
+
+                        img {
+                            width: 80%;
+                            border: 1px solid $iconColor;
+                        }
+        
+                        span {
+                            margin-right: 20px;
+                            padding-right: 20px;
+                            border-right: 1px solid $iconColor;
+                            padding-left: 20px;
+                            border-left: 1px solid $iconColor;
+                        }
+
+                        i.delete-item {
+                            color: red;
+                            font-size: 20px;
+                            left: 10px;
+                            cursor: pointer;
+                        }
+                    }
+
+                    td.large-width {
+                        border-bottom: 2px solid $lightBlueBackground;
+                        padding-bottom: 10px;
+                        padding-top: 10px;
+                        width: 40%;
+
+                        span.item-title {
+                            width: 60px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.container-background {
+    margin: auto;
+    width: 75%;
+    position: relative;
+    top: 20px;
+}
+
+@media only screen and (min-width: 768px) {
+    body {
+        height: 722px;
+    }
+    .container-background {  
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin-right: 0;
+            margin-left: 0;
+            width: 100%;
+
+            .side {
+                flex: 50%;
+                background-color: #e7e7e7;
+                padding: 20px;
+                height: 430px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                img {
+                    width: 70%;
+                }
+            }
+    
+            .main {
+                flex: 50%;
+                background-color: $bgColorWhite;
+                height: 430px;
+                padding: 20px;
+                overflow-y: auto;
+
+                hr {
+                    color: $iconColor;
+                    border-top: 0;
+                }
+
+                div {
+                    span.item-title {
+                        font-size: 24px;
+                    }
+
+                    span.item-id {
+                        float: right;
+                        color: $iconColor;
+                    }
+
+                    span.discount-info {
+                        margin: 0;
+                        font-size: 10px;
+                        color: $iconColor;
+                        position: relative;
+                        top: -10px;
+                    }
+
+                    span.availibility-info {
+                        font-size: 10px;
+                        color: $iconColor;
+                    }
+
+                }
+
+                div.ratings-details {
+                    i {
+                        color: $iconColor;
+                    }
+
+                    i.selected {
+                        color: $lightBlueBackground;
+                    }
+
+                    span.ratings {
+                        margin-left: 15px;
+                        font-weight: bold;
+                    }
+
+                    span.reviews {
+                        margin-left: 20px;
+                        font-weight: bold;
+                        font-size: 12px;
+                        cursor: pointer;
+
+                        u {
+                            span {
+                                font-size: 10px;
+                            }
+                        }
+                    }
+                }
+
+                div.description-details {
+                    margin-top: 15px;
+                }
+
+                div.country-details {
+                    margin-top: 30px;
+                    margin-bottom: 15px;
+
+                    span.underline-text {
+                        font-size: 12px;
+                        margin-left: 5px;
+                    }
+                }
+
+                div.price-container {
+                    margin-top: 20px;
+
+                    span.original-price {
+                        font-size: 20px;
+                        margin-top: 10px;
+                        margin-right: 5px;
+                        color: red;
+                        text-decoration: line-through;
+                    }
+
+                    span.current-price {
+                        font-size: 20px;
+                    }
+
+                    button {
+                        float: right;
+                        color: $bgColorWhite;
+                        background-color: $lightBlueBackground;
+                        text-align: center;
+                        vertical-align: middle;
+                        border: 1px solid transparent;
+                        padding: .375rem .75rem;
+                        font-size: 1rem;
+                        line-height: 1.5;
+                        border-radius: .25rem;
+                        transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+
+        .bottom-container {
+            background-color: $bgColorWhite;
+            height: 70px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            div {
+                width: 250px;
+                text-align: center;
+                font-size: 12px;
+                height: 70px;
+                display: table;
+
+                div {
+                    display: table-cell;
+                    vertical-align: middle;
+
+                    i {
+                        font-size: 20px;
+                        margin-right: 5px;
+                    }
+
+                    i.fa-plus {
+                        font-size: 12px;
+                        position: relative;
+                        top: -3px;
+                        left: 4px;
+                    }
+
+                    i.fa-cc-visa, i.fa-cc-mastercard, i.fa-cc-paypal, i.fa-cc-amex {
+                        color: $lightBlueBackground;
+                    }
+
+                    span.with-style {
+                        position: relative;
+                        top: -4px;
+                    }
+
+                    h2, p {
+                        margin: 0;
+                    }
+                }
+            }
+        }
+
+        .footer-container {
+            background-color: black;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            div {
+                width: 200px;
+                color: grey;
+                text-align: center;
+                font-size: 12px;
+                height: 60px;
+                display: table;
+
+                &.selected, &:hover {
+                    border-bottom: 2px solid $lightBlueBackground;
+                    color: $bgColorWhite;
+                }
+
+                span {
+                    display: table-cell;
+                    vertical-align: middle;
+                }
+            }
+        }
+    }
+}
