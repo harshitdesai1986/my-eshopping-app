@@ -53,6 +53,8 @@ lite-server --baseDir="dist/my-eshopping-app"
 - Item(s) can be deleted from cart
 - Total cart value can be seen
 
+**PS.** Find the production ready code in "dist" directory.
+
 <div id='section4'/>
 
 # Application Usage Guide
