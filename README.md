@@ -71,4 +71,4 @@ lite-server --baseDir="dist/my-eshopping-app"
     - Click on Add To Basket button to add item to the cart:
         - The count on the cart icon gets updated
         - The cart total value gets updated
-    - The starts (ratings) are updated/highlighted based on the ratings coming from JSON
+    - The stars (ratings) are updated/highlighted based on the ratings coming from JSON
