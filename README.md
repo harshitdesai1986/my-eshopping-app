@@ -27,7 +27,7 @@ npm install -g lite-server
 ```javascript
 lite-server --baseDir="dist/my-eshopping-app"
 ```
-**PS.** This will start the Angular(Frontend) application in your default browser on port 3001
+**PS.** This will start the Angular(Frontend) application in your default browser on port 3000/3001
 
 <div id='section3'/>
 
